@@ -1,0 +1,92 @@
+@import "../../../styles/typography.scss";
+
+.container {
+    background-color: var(--background-50);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    width: 45rem;
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-100);
+    border-radius: 0.8rem;
+    padding: 3.2rem;
+}
+
+.containerHeader {
+    display: flex;
+    gap: 1.6rem;
+}
+
+.img {
+    width: 12.8rem;
+    height: 12.5rem;
+}
+
+.title {
+    width: 100%;
+    @include text(1);
+    color: var(--primary-600);
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.6rem;
+}
+
+.emailContainer, .passwordContainer {
+    @include text(3);
+    color: var(--primary-600);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.input {
+    @include text(5);
+    width: 100%;
+    height: 4.8rem;
+    border-radius: 0.8rem;
+    background-color: var(--background-50);
+    outline: none;
+    border: 0.1rem solid var(--primary-600);
+    color: var(--text-800);
+    padding: 1rem;
+
+}
+
+.button {
+    cursor: pointer;
+    align-self: flex-end;
+    width: fit-content;
+    padding: 0.4rem 3.2rem;
+    @include text(3);
+    background-color: var(--background-600);
+    color: var(--text-50);
+    border: none;
+    border-radius: 0.8rem;
+    height: 4rem;
+
+    &:hover {
+        background-color: var(--background-500);
+    }
+
+    &:active {
+        background-color: var(--background-600);
+    }
+}
+
+.msgError {
+    @include text(5);
+    font-size: 1.6rem;
+    height: 1.6rem;
+    color: blue;
+}
