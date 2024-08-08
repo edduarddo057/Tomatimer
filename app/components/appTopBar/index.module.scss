@@ -1,0 +1,33 @@
+@import "../../../styles/typography.scss";
+
+.container {
+    background-color: var(--background-600);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.topBarContainer {
+    height: 6.4rem;
+    padding: 0.8rem 3.2rem;
+}
+
+.titleContainer {
+    display: flex;
+    gap: 1.6rem;
+}
+
+.title {
+    @include text(2);
+    color: var(--text-50);
+}
+
+.img {
+    width: 4.5rem;
+    height: 4.6rem;
+}
+
+.content {
+    flex-grow: 1;
+    background-color: var(--background-50);
+}
