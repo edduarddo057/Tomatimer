@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pomodoro Timer
 
-## Getting Started
+Um timer estilo pomodoro desenvolvido em Next.js, utilizando as bibliotecas Sass, Yup, Formik, classnames entre outros, tipografias personalizadas e variáveis de estilo.
 
-First, run the development server:
+## Índice
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Visão Geral](#visão-geral)
+- [Funcionalidades](#funcionalidades)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Instalação](#instalação)
+- [Como Usar](#como-usar)
+- [Contribuição](#contribuição)
+- [Licença](#licença)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Visão Geral
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+O Pomodoro Timer é uma aplicação web que ajuda a gerenciar o tempo de trabalho e descanso usando a técnica pomodoro. A aplicação é construída com Next.js e estilizada com Sass, garantindo uma interface moderna e responsiva. Formik e Yup são utilizados para gerenciamento e validação de formulários.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Funcionalidades
 
-## Learn More
+- Início, pausa e reset do timer.
+- Configuração de tempos de trabalho e descanso.
+- Adição e conclusão de tarefas.
+- Login e cadastro de usuário.
+- Interface direta e amigável.
 
-To learn more about Next.js, take a look at the following resources:
+## Tecnologias Utilizadas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- *Next.js*: Framework React para renderização do lado do servidor e geração de sites estáticos.
+- *Sass*: Pré-processador CSS para estilos aninhados e variáveis.
+- *Formik*: Biblioteca para gerenciamento de formulários no React.
+- *Yup*: Biblioteca para validação de formulários.
+- *Tipografias Personalizadas*: Uso de fontes personalizadas para melhorar a estética.
+- *Variáveis de Estilo*: Consistência visual através de variáveis de tema.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Instalação
 
-## Deploy on Vercel
+Siga os passos abaixo para configurar o projeto localmente:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Clone o repositório:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   git clone https://github.com/seu-usuario/Tomatimer.git
+   
+
+2. Instale as dependências:
+
+   npm install
+   
+
+3. Inicie o servidor de desenvolvimento:
+   
+   npm run dev
+   
+
+## Como Usar
+
+1. Acesse a aplicação em seu navegador:
+
+   http://localhost:3000/home
+   
+2. Adicione uma tarefa.
+
+3. Clique no botão "Play" para iniciar o timer.
