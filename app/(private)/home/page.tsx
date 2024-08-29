@@ -1,17 +1,12 @@
 "use client";
 import classNames from "classnames";
 import styles from "./index.module.scss";
-import Pause from "../../../public/icons/pause.svg";
-import Play from "../../../public/icons/play.svg";
-import Restart from "../../../public/icons/restart.svg";
 import Plus from "../../../public/icons/Plus.svg";
 
 import { useState } from "react";
-
-type TimerType = "long" | "short" | "pomodoro";
+import Timer from "@/app/components/timer";
 
 function Home() {
-  const [timer, setTimer] = useState<TimerType>("pomodoro");
   const [tasks, setTasks] = useState([
     {
       name: "Atividade de web",
@@ -27,67 +22,9 @@ function Home() {
     },
   ]);
 
-  function timerValue(timerType: TimerType) {
-    switch (timerType) {
-      case "pomodoro":
-        return "25:00";
-      case "short":
-        return "05:00";
-      default:
-        return "15:00";
-    }
-  }
-
   return (
     <div className={styles.container}>
-      <div className={styles.sectionTimer}>
-        <div className={styles.backgroundTimer}>
-          <div className={styles.typeTimes}>
-            <div
-              className={classNames(styles.typeTimeItem, {
-                [styles.active]: timer == "pomodoro",
-              })}
-              onClick={() => {
-                setTimer("pomodoro");
-              }}
-            >
-              Pomodoro
-            </div>
-            <div
-              className={classNames(styles.typeTimeItem, {
-                [styles.active]: timer == "short",
-              })}
-              onClick={() => {
-                setTimer("short");
-              }}
-            >
-              Descanso Curto
-            </div>
-            <div
-              className={classNames(styles.typeTimeItem, {
-                [styles.active]: timer == "long",
-              })}
-              onClick={() => {
-                setTimer("long");
-              }}
-            >
-              Descanso Longo
-            </div>
-          </div>
-          <div className={styles.timer}>{timerValue(timer)}</div>
-          <div className={styles.controls}>
-            <div className={styles.restartControl}>
-              <Restart />
-            </div>
-            <div className={styles.playPauseControl}>
-              <Play />
-            </div>
-            <div className={styles.StopControl}>
-              <Pause />
-            </div>
-          </div>
-        </div>
-      </div>
+      <Timer />
       <div className={styles.sectionTask}>
         <div className={styles.taskContainer}>
           <h3 className={styles.titleTask}>Tarefas</h3>
