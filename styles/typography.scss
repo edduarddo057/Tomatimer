@@ -35,4 +35,11 @@
         font-weight: 400;
         font-family: Jost, 'Arial Narrow', sans-serif;;
     }
+
+    @if ($size == 6) {
+        font-size: 1.5rem;
+        line-height: 2.4rem;
+        font-weight: 400;
+        font-family: Jost, 'Arial Narrow', sans-serif;;
+    }
 }

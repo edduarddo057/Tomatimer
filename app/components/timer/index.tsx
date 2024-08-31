@@ -2,12 +2,13 @@
 
 import {
 	useTimerConfigStore,
-} from "../../store/timer";
+} from "../../_store";
 import { useEffect, useMemo, useState } from "react";
 import styles from "./index.module.scss";
-import Pause from "../../../public/icons/pause.svg";
-import Play from "../../../public/icons/play.svg";
-import Restart from "../../../public/icons/restart.svg";
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import PauseCircleIcon from '@mui/icons-material/PauseCircle';
+import ReplayIcon from '@mui/icons-material/Replay';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
 import classNames from "classnames";
 
 type TimerType = "pomodoro" | "short" | "long";
@@ -86,12 +87,14 @@ export default function Timer() {
 			setCurrentRound(
 				(prevRound) => (prevRound % timerConfig.numberOfRounds) + 1
 			);
-			setIsRunning(timerConfig.autoStartWork);
-		} else {
-			setIsRunning(timerConfig.autoStartBreak);
 		}
-
+		setIsRunning(false);
 		setTimerType((timerType) => getNextState(timerType));
+	};
+
+	const resetTimer = () => {
+		setTime(timerStateTimes[timerType]);
+		setIsRunning(false);
 	};
 
 	const toggleTimer = () => {
@@ -102,16 +105,15 @@ export default function Timer() {
 		setIsRunning(!isRunning);
 	};
 
-	const reset = () => {
-		setTime(timerStateTimes[timerType]);
-		setIsRunning(false);
+	const skipTimer = () => {
+		progressRound();
 	};
 
 	const formatTime = (time: number) => {
 		const minutes = Math.floor(time / 60);
 		const seconds = time % 60;
 
-		return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+		return `${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 	};
 
 	return (
@@ -130,12 +132,20 @@ export default function Timer() {
 				</div>
 				<div className={styles.timer}>{formatTime(time)}</div>
 				<div className={styles.controls}>
-					<button className={styles.playPauseControl} onClick={toggleTimer}>
-						{!isRunning ? <Play /> : <Pause />}
+					<button onClick={resetTimer}>
+						<ReplayIcon sx={{ fontSize: 40, color: '#b81714' }} />
 					</button>
-					<button className={styles.restartControl} onClick={reset}>
-						<Restart />
+					<button onClick={toggleTimer}>
+						{!isRunning ? <PlayCircleIcon sx={{ fontSize: 72, color: '#b81714' }} color="primary" /> : <PauseCircleIcon sx={{ fontSize: 72, color: '#b81714' }} />}
 					</button>
+					<button onClick={skipTimer}>
+						<SkipNextIcon sx={{ fontSize: 40, color: '#b81714' }} />
+					</button>
+				</div>
+			</div>
+			<div className={styles.backgroundRounds}>
+				<div className={styles.rounds}>
+					{currentRound} / {timerConfig.numberOfRounds} pomodoros
 				</div>
 			</div>
 		</div>
