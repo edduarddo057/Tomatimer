@@ -4,3 +4,9 @@ export type TimerConfig = {
 	longMinutes: number;
 	numberOfRounds: number;
 };
+
+export type Task = {
+	id: string;
+	name: string;
+	checked: boolean;
+};
