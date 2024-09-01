@@ -1,42 +1,42 @@
 @import "../../../styles/typography.scss";
 
 .sectionTask {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .taskContainer {
-    width: 100%;
-    height: 45rem;
-    padding: 2.4rem;
-    border-left: 0.1rem solid var(--primary-600);
-    display: flex;
-    flex-direction: column;
-    gap: 1.6rem;
+	width: 100%;
+	height: 45rem;
+	padding: 2.4rem;
+	border-left: 0.1rem solid var(--primary-600);
+	display: flex;
+	flex-direction: column;
+	gap: 1.6rem;
 	overflow-y: scroll;
 }
 
 .titleTask {
-    @include text(1);
-    color: var(--primary-600);
+	@include text(1);
+	color: var(--primary-600);
 }
 
 .itemList {
-    cursor: pointer;
-    width: 90%;
-    padding: 1.6rem;
-    border-radius: 0.8rem;
-    border: 0.1rem solid var(--primary-600);
-    display: flex;
-    align-items: center;
+	cursor: pointer;
+	width: 90%;
+	padding: 1.6rem;
+	border-radius: 0.8rem;
+	border: 0.1rem solid var(--primary-600);
+	display: flex;
+	align-items: center;
 	justify-content: space-between;
-    gap: 0.8rem;
+	gap: 0.8rem;
 
-    &.active {
-        opacity: 0.5;
-    }
+	&.active {
+		opacity: 0.5;
+	}
 
 	button {
 		background-color: transparent;
@@ -44,31 +44,31 @@
 		cursor: pointer;
 		visibility: hidden;
 	}
-}
 
-.itemList:hover {
-	button {
-		visibility: visible;
+	&:hover {
+		button {
+			visibility: visible;
+		}
 	}
 }
 
 .labelItem {
-    @include text(5);
-    color: var(--primary-600);
+	@include text(5);
+	color: var(--primary-600);
 
-    &.active {
-        text-decoration: line-through;
-    }
+	&.active {
+		text-decoration: line-through;
+	}
 }
 
 .itemInput {
-    width: 90%;
-    padding: 1.6rem;
-    border-radius: 0.8rem;
-    border: 0.1rem solid var(--primary-600);
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
+	width: 90%;
+	padding: 1.6rem;
+	border-radius: 0.8rem;
+	border: 0.1rem solid var(--primary-600);
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
 
 	button {
 		background-color: transparent;
@@ -84,34 +84,39 @@
 
 .input {
 	@include text(5);
-    width: 80%;
-    color: var(--primary-600);
+	width: 80%;
+	color: var(--primary-600);
 	background-color: transparent;
 	border: 0;
 }
 
 .addItem {
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-    padding: 1.2rem;
-    border-radius: 0.8rem;
-    border: 0.1rem dashed var(--primary-600);
-    background-color: var(--background-100);
-    cursor: pointer;
+	width: 90%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.8rem;
+	padding: 1.2rem;
+	border-radius: 0.8rem;
+	border: 0.1rem dashed var(--primary-600);
+	background-color: var(--background-100);
+	cursor: pointer;
 
-    &:hover {
-        background-color: var(--background-200);
-    }
+	&:hover {
+		background-color: var(--background-200);
+	}
 
-    &:active {
-        background-color: var(--background-100);
-    }
+	&:active {
+		background-color: var(--background-100);
+	}
+
+	&:disabled {
+		background-color: var(--background-100);
+		cursor: not-allowed;
+	}
 }
 
 .addItemLabel {
-    @include text(5);
-    color: var(--primary-600);
+	@include text(5);
+	color: var(--primary-600);
 }

@@ -74,7 +74,7 @@ export default function Tasks() {
 				<div className={styles.titleTask}>Tarefas</div>
 				{tasks.map((task) => renderTask(task))}
 				{addingTask && renderAddingTask()}
-				<button className={styles.addItem} onClick={() => setAddingTask(true)}>
+				<button className={styles.addItem} onClick={() => setAddingTask(true)} disabled={addingTask}>
 					<div className={styles.iconAdd}>
 						<AddIcon sx={{ fontSize: 24, color: '#b81714' }} />
 					</div>
