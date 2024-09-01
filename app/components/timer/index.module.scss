@@ -1,0 +1,83 @@
+@import "../../../styles/typography.scss";
+
+.sectionTimer {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+}
+
+.backgroundTimer {
+	background-color: var(--background-100);
+	height: 39rem;
+	width: 64rem;
+	border-radius: 1.6rem;
+	padding: 2.4rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.typeTimes {
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+}
+
+.typeTimeItem {
+	color: var(--primary-600);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	@include text(3);
+	padding: 0.8rem 1.6rem;
+	border-bottom: 0.1rem solid var(--primary-600);
+	border-top-left-radius: 0.8rem;
+	border-top-right-radius: 0.8rem;
+
+	&:hover {
+		background-color: var(--background-200);
+	}
+
+	&.active {
+		cursor: default;
+		color: var(--text-50);
+		border-bottom: none;
+		border-radius: 1.6rem;
+		background-color: var(--background-500);
+	}
+}
+
+.timer {
+	width: 100%;
+	text-align: center;
+	@include text(1);
+	font-size: 12.8rem;
+	line-height: 16rem;
+	color: var(--primary-600);
+}
+
+.controls {
+	width: auto;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	gap: 3.2rem;
+
+	button {
+		background-color: transparent;
+		border: 0;
+		cursor: pointer;
+	}
+}
+
+.backgroundRounds {
+	width: 64rem;
+}
+
+.rounds {
+	@include text(6);
+	color: var(--primary-600);
+}
