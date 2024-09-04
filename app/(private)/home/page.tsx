@@ -1,7 +1,7 @@
 "use client";
 import classNames from "classnames";
 import styles from "./index.module.scss";
-import Plus from "../../../public/icons/Plus.svg";
+import Plus from "../../../public/icons/plus.svg";
 
 import { useState } from "react";
 import Timer from "../../components/timer";
