@@ -1,10 +1,13 @@
 "use client";
-import { useRouter } from "next/navigation";
 import styles from "./index.module.scss";
 import * as Yup from "yup";
 import { useFormik } from "formik";
+import { redirect, useRouter } from "next/navigation";
+import { postRegisterUser } from "@/service/register";
+import { toastMessage } from "@/function/toast/toast";
 
 interface Register {
+  name: string;
   email: string;
   password: string;
   confirm_password: string;
@@ -13,6 +16,7 @@ interface Register {
 function LoginPage() {
   const router = useRouter();
   const validationSchemaLogin = Yup.object({
+    name: Yup.string().required("O nome não pode ser vazio"),
     email: Yup.string()
       .email("Formato de email inválido")
       .required("O email é obrigatório"),
@@ -24,11 +28,31 @@ function LoginPage() {
 
   const formik = useFormik<Register>({
     initialValues: {
+      name: "",
       email: "",
       password: "",
       confirm_password: "",
     },
-    onSubmit: () => {
+    onSubmit: (data) => {
+      // postRegisterUser({
+      //     email: data.email,
+      //     password: data.password,
+      //     name: data.name
+      // })
+      //     .then(() => {
+      //         console.log('deu bão');
+      //         toastMessage({
+      //             msg: 'Sucesso ao realizar o cadastro do usuário',
+      //             type: 'success'
+      //         });
+      //         redirect('/login');
+      //     })
+      //     .catch(() => {
+      //         toastMessage({
+      //             msg: 'Erro ao realizar o cadastro do usuário tente novamente',
+      //             type: 'error'
+      //         });
+      //     });
       router.replace("/home");
     },
     validationSchema: validationSchemaLogin,
@@ -41,6 +65,19 @@ function LoginPage() {
           <h2 className={styles.title}>Cadastrar</h2>
         </div>
         <form onSubmit={formik.handleSubmit} className={styles.form}>
+          <div className={styles.emailContainer}>
+            <label htmlFor="name">Name</label>
+            <input
+              className={styles.input}
+              placeholder="Digite seu name"
+              id="name"
+              type="text"
+              value={formik.values.name}
+              onChange={(e) => formik.setFieldValue("name", e.target.value)}
+            />
+            <div className={styles.msgError}>{formik.errors.name}</div>
+          </div>
+
           <div className={styles.emailContainer}>
             <label htmlFor="email">E-mail</label>
             <input

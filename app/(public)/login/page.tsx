@@ -1,9 +1,11 @@
 "use client";
+import { signIn } from "next-auth/react";
 import styles from "./index.module.scss";
 import { useFormik } from "formik";
+import * as Yup from "yup";
+import { toastMessage } from "@/function/toast/toast";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import * as Yup from "yup";
 
 interface Login {
   email: string;
@@ -24,8 +26,23 @@ function LoginPage() {
       email: "",
       password: "",
     },
-    onSubmit: () => {
-      router.replace("/home");
+    onSubmit: async (e) => {
+      // setLoading(true);
+      if (e.email && e.password) {
+        // const result = await signIn("credentials", {
+        //   login: e.email,
+        //   password: e.password,
+        //   redirect: false,
+        // });
+
+        // if (result?.error) {
+        //   toastMessage({ msg: "Login ou senha incorretos", type: "error" });
+        //   // setLoading(false);
+        //   return;
+        // }
+
+        router.push("/home");
+      }
     },
     validationSchema: validationSchemaLogin,
   });
