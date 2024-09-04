@@ -1,5 +1,5 @@
-import { postSignIn } from "@/service/login";
-import { UserType } from "@/service/login/type";
+import { postSignIn } from "../service/login";
+import { UserType } from "../service/login/type";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 

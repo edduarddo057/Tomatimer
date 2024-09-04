@@ -4,7 +4,7 @@ import styles from "./index.module.scss";
 import Plus from "../../../public/icons/Plus.svg";
 
 import { useState } from "react";
-import Timer from "@/app/components/timer";
+import Timer from "../../components/timer";
 
 function Home() {
   const [tasks, setTasks] = useState([

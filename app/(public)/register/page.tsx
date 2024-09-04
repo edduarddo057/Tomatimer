@@ -3,8 +3,6 @@ import styles from "./index.module.scss";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { redirect, useRouter } from "next/navigation";
-import { postRegisterUser } from "@/service/register";
-import { toastMessage } from "@/function/toast/toast";
 
 interface Register {
   name: string;

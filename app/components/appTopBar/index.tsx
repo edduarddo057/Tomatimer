@@ -9,6 +9,7 @@ export function AppTopBar({ children }: AppTopBarProps) {
     <div className={styles.container}>
       <div className={styles.topBarContainer}>
         <div className={styles.titleContainer}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             className={styles.img}
             src="/images/LogoMini.png"

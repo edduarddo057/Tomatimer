@@ -3,7 +3,6 @@ import { signIn } from "next-auth/react";
 import styles from "./index.module.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { toastMessage } from "@/function/toast/toast";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -51,6 +50,7 @@ function LoginPage() {
     <div className={styles.container}>
       <div className={styles.content}>
         <div className={styles.containerHeader}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             width={50}
             height={50}
