@@ -1,0 +1,23 @@
+@import "../../styles/typography.scss";
+@import "../../styles/colors.scss";
+
+.container {
+    @include text(2);
+    color: grey;
+    background-color: lightgrey;
+}
+
+.iconContainer {
+    display: flex;
+    height: 100%;
+    align-items: flex-start;
+}
+
+.icon {
+    cursor: pointer;
+    width: 1.6rem;
+    height: 1.6rem;
+    & svg path {
+        fill: grey;
+    }
+}
