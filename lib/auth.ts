@@ -6,7 +6,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 
 export const nextAuthOptions: NextAuthOptions = {
-    secret: "ebc24059-92f1-4564-b5ba-e42eac106b2f",
     providers: [CredentialsProvider({
         name: "credentials",
         credentials: {

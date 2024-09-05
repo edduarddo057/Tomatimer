@@ -1,7 +1,7 @@
 "use client";
 import { ReactNode } from "react";
 import styles from "./index.module.scss";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 
 interface AppTopBarProps {
@@ -10,6 +10,10 @@ interface AppTopBarProps {
 export function AppTopBar({ children }: AppTopBarProps) {
   const { data: session } = useSession();
   const router = useRouter();
+
+  if (!session) {
+    router.push("/login");
+  }
 
   return (
     <div className={styles.container}>
@@ -29,7 +33,10 @@ export function AppTopBar({ children }: AppTopBarProps) {
             <div
               style={{ display: "flex", alignItems: "center", gap: "0.8rem" }}
             >
-              <div className={styles.logged} onClick={() => signOut()}>
+              <div
+                className={styles.logged}
+                onClick={async () => await signOut()}
+              >
                 Sair
               </div>
             </div>
@@ -44,7 +51,6 @@ export function AppTopBar({ children }: AppTopBarProps) {
             </div>
           )}
         </div>
-        {/* <div>actions</div> */}
       </div>
       <div className={styles.content}>{children}</div>
     </div>
