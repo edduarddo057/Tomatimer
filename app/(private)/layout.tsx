@@ -8,11 +8,5 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getServerSession(nextAuthOptions);
-
-  if (!session) {
-    redirect("/login");
-  }
-
   return <AppTopBar>{children}</AppTopBar>;
 }

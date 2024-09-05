@@ -30,21 +30,7 @@ function LoginPage() {
       password: "",
     },
     onSubmit: async (e) => {
-      setLoading(true);
       if (e.email && e.password) {
-        const result = await signIn("credentials", {
-          login: e.email,
-          password: e.password,
-          redirect: false,
-          callbackUrl: "/home",
-        });
-        if (result?.error) {
-          toastMessage({ msg: "Login ou senha incorretos", type: "error" });
-          setLoading(false);
-          return;
-        }
-
-        setLoading(false);
         router.push("/home");
       }
     },

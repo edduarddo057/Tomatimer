@@ -43,27 +43,11 @@ function LoginPage() {
       confirm_password: "",
     },
     onSubmit: (data) => {
-      setLoading(true);
-      postRegisterUser({
-        email: data.email,
-        password: data.password,
-        name: data.name,
-      })
-        .then(() => {
-          toastMessage({
-            msg: "Usuário criado com sucesso",
-            type: "success",
-          });
-          setLoading(false);
-          router.replace("/login");
-        })
-        .catch(() => {
-          toastMessage({
-            msg: "Erro cadastrar do usuário tente novamente",
-            type: "error",
-          });
-          setLoading(false);
-        });
+      toastMessage({
+        msg: "Usuário criado com sucesso",
+        type: "success",
+      });
+      router.replace("/login");
     },
     validationSchema: validationSchemaLogin,
   });

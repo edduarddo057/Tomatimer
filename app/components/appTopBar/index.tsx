@@ -8,9 +8,6 @@ interface AppTopBarProps {
   children: ReactNode;
 }
 export function AppTopBar({ children }: AppTopBarProps) {
-  const { data: session } = useSession();
-  const router = useRouter();
-
   return (
     <div className={styles.container}>
       <div className={styles.topBarContainer}>
@@ -24,29 +21,6 @@ export function AppTopBar({ children }: AppTopBarProps) {
           <div className={styles.title}>Tomatimer</div>
         </div>
         <div className={styles.stateUser}>Bem - vindo</div>
-        <div className={styles.stateUser}>
-          {session?.user.token ? (
-            <div
-              style={{ display: "flex", alignItems: "center", gap: "0.8rem" }}
-            >
-              <div
-                className={styles.logged}
-                onClick={async () => await signOut()}
-              >
-                Sair
-              </div>
-            </div>
-          ) : (
-            <div
-              className={styles.unlogged}
-              onClick={() => {
-                router.push("/login");
-              }}
-            >
-              Entrar
-            </div>
-          )}
-        </div>
       </div>
       <div className={styles.content}>{children}</div>
     </div>
