@@ -8,6 +8,9 @@
 }
 
 .topBarContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     height: 6.4rem;
     padding: 0.8rem 3.2rem;
 }
@@ -20,6 +23,30 @@
 .title {
     @include text(2);
     color: var(--text-50);
+}
+
+.stateUser {
+    @include text(2);
+    color: var(--text-50);
+}
+
+.unlogged, .logged {
+    @include text(4);
+    cursor: pointer;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    background-color: var(--background-400);
+    &:hover {
+        background-color: var(--background-300);
+    }
+    &:active {
+        background-color: var(--background-400);
+    }
+}
+
+.logged {
+    font-size: 20px;
+    padding: 0.4rem;
 }
 
 .img {

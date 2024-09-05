@@ -9,7 +9,7 @@
 }
 
 .content {
-    width: 45rem;
+    width: 55rem;
     padding: 1.6rem;
     display: flex;
     flex-direction: column;
@@ -87,6 +87,6 @@
 .msgError {
     @include text(5);
     font-size: 1.6rem;
-    height: 1.6rem;
+    height: 2.8rem;
     color: blue;
 }

@@ -5,6 +5,9 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { toastMessage } from "@/function/toast/toast";
+import { useState } from "react";
+import { Spinnner } from "@/app/components/spinner";
 
 interface Login {
   email: string;
@@ -12,6 +15,7 @@ interface Login {
 }
 
 function LoginPage() {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const validationSchemaLogin = Yup.object({
     email: Yup.string()
@@ -26,20 +30,21 @@ function LoginPage() {
       password: "",
     },
     onSubmit: async (e) => {
-      // setLoading(true);
+      setLoading(true);
       if (e.email && e.password) {
-        // const result = await signIn("credentials", {
-        //   login: e.email,
-        //   password: e.password,
-        //   redirect: false,
-        // });
+        const result = await signIn("credentials", {
+          login: e.email,
+          password: e.password,
+          redirect: false,
+          callbackUrl: "/home",
+        });
+        if (result?.error) {
+          toastMessage({ msg: "Login ou senha incorretos", type: "error" });
+          setLoading(false);
+          return;
+        }
 
-        // if (result?.error) {
-        //   toastMessage({ msg: "Login ou senha incorretos", type: "error" });
-        //   // setLoading(false);
-        //   return;
-        // }
-
+        setLoading(false);
         router.push("/home");
       }
     },
@@ -100,7 +105,7 @@ function LoginPage() {
             </Link>
 
             <button type="submit" className={styles.button}>
-              Entrar
+              {loading ? <Spinnner /> : "Entrar"}
             </button>
           </div>
         </form>

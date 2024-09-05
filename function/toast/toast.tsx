@@ -1,6 +1,5 @@
 import { toast } from "react-toastify";
 import styles from "./toast.module.scss";
-import Close from "../../public/icons/close.svg";
 
 interface ToastMessageProps {
   type: "success" | "error" | "warn" | "info";
@@ -28,11 +27,6 @@ export function toastMessage({
       toast.error(msg, {
         position: position,
         className: styles.container,
-        closeButton: (props) => (
-          <div className={styles.iconContainer}>
-            <Close />{" "}
-          </div>
-        ),
       }),
 
     warn: () =>

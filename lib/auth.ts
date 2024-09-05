@@ -18,9 +18,9 @@ export const nextAuthOptions: NextAuthOptions = {
                 password: credentials?.password,
             })            
             const { data } = response
-            // if (data && data.statusCode >= 200 && data.statusCode <= 300 ) {
-            //     return { ...response }
-            // }
+            if (data) {
+                return data
+            }
 
             return null
         },
@@ -36,7 +36,6 @@ export const nextAuthOptions: NextAuthOptions = {
     callbacks: {
         async jwt({ token, trigger, user, session }) {
             user && (token.user = user);
-            console.log(user)
             return token;
         },
         async session({ session, token }) {

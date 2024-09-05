@@ -3,6 +3,10 @@ import styles from "./index.module.scss";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { redirect, useRouter } from "next/navigation";
+import { toastMessage } from "@/function/toast/toast";
+import { postRegisterUser } from "@/service/register";
+import { useState } from "react";
+import { Spinnner } from "@/app/components/spinner";
 
 interface Register {
   name: string;
@@ -12,13 +16,20 @@ interface Register {
 }
 
 function LoginPage() {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const validationSchemaLogin = Yup.object({
     name: Yup.string().required("O nome não pode ser vazio"),
     email: Yup.string()
       .email("Formato de email inválido")
       .required("O email é obrigatório"),
-    password: Yup.string().required("A senha é obrigatória"),
+    password: Yup.string()
+      .min(8, "A senha deve ter pelo menos 8 caracteres")
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/,
+        "Deve conter letra maiúscula e minúscula, número e caracter especial"
+      )
+      .required("A senha é obrigatória"),
     confirm_password: Yup.string()
       .oneOf([Yup.ref("password"), ""], "As senhas devem ser iguais")
       .required("Confirmação de senha é obrigatória"),
@@ -32,26 +43,27 @@ function LoginPage() {
       confirm_password: "",
     },
     onSubmit: (data) => {
-      // postRegisterUser({
-      //     email: data.email,
-      //     password: data.password,
-      //     name: data.name
-      // })
-      //     .then(() => {
-      //         console.log('deu bão');
-      //         toastMessage({
-      //             msg: 'Sucesso ao realizar o cadastro do usuário',
-      //             type: 'success'
-      //         });
-      //         redirect('/login');
-      //     })
-      //     .catch(() => {
-      //         toastMessage({
-      //             msg: 'Erro ao realizar o cadastro do usuário tente novamente',
-      //             type: 'error'
-      //         });
-      //     });
-      router.replace("/home");
+      setLoading(true);
+      postRegisterUser({
+        email: data.email,
+        password: data.password,
+        name: data.name,
+      })
+        .then(() => {
+          toastMessage({
+            msg: "Usuário criado com sucesso",
+            type: "success",
+          });
+          setLoading(false);
+          router.replace("/login");
+        })
+        .catch(() => {
+          toastMessage({
+            msg: "Erro cadastrar do usuário tente novamente",
+            type: "error",
+          });
+          setLoading(false);
+        });
     },
     validationSchema: validationSchemaLogin,
   });
@@ -120,7 +132,7 @@ function LoginPage() {
           </div>
 
           <button type="submit" className={styles.button}>
-            Cadastrar
+            {loading ? <Spinnner /> : "Cadastrar"}
           </button>
         </form>
       </div>
