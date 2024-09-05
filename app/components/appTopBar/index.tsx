@@ -11,10 +11,6 @@ export function AppTopBar({ children }: AppTopBarProps) {
   const { data: session } = useSession();
   const router = useRouter();
 
-  if (!session) {
-    router.push("/login");
-  }
-
   return (
     <div className={styles.container}>
       <div className={styles.topBarContainer}>
